@@ -103,39 +103,6 @@ function callbackForVideo(result) {
     //     window.requestAnimationFrame(predictWebcam);
     // }
 }
-//--------------------------------------------------------------------------------
-// function callbackForVideo(result) {
-//     const segmentationMask = result.segmentationMask;
-//     const maskData = new Uint8Array(segmentationMask.data);
-//     const maskWidth = segmentationMask.width;
-//     const maskHeight = segmentationMask.height;
-  
-//     const canvas = document.createElement("canvas");
-//     canvas.width = maskWidth;
-//     canvas.height = maskHeight;
-//     const context = canvas.getContext("2d");
-//     const imageData = context.createImageData(maskWidth, maskHeight);
-//     const data = imageData.data;
-  
-//     for (let i = 0; i < maskData.length; i++) {
-//       const j = i * 4;
-//       data[j] = 0; // R
-//       data[j + 1] = maskData[i] ? 255 : 0; // G (塗りつぶしの条件に応じて変更可能)
-//       data[j + 2] = 0; // B
-//       data[j + 3] = 255; // A
-//     }
-  
-//     context.putImageData(imageData, 0, 0);
-  
-//     // キャンバスの内容を表示するなど、適切な処理を行ってください
-  
-//     if (webcamRunning === true) {
-//       window.requestAnimationFrame(predictWebcam);
-//     }
-//   }
-  //--------------------------------------------------------------------------------
-
-  
 
 async function predictWebcam() {
 
@@ -168,31 +135,3 @@ async function predictWebcam() {
         window.requestAnimationFrame(predictWebcam);
     }
 }
-
-//--------------------------------------------------------------------------------
-// async function predictWebcam() {
-//     if (!imageSegmenter) {
-//       console.log("Wait! imageSegmenter not loaded yet.");
-//       return;
-//     }
-  
-//     // 以前のコードをコメントアウトし、新たに変数を定義します
-//     const videoWidth = video.videoWidth;
-//     const videoHeight = video.videoHeight;
-//     const canvas = document.createElement("canvas");
-//     canvas.width = videoWidth;
-//     canvas.height = videoHeight;
-//     const canvasContext = canvas.getContext("2d");
-//     canvasContext.drawImage(video, 0, 0, videoWidth, videoHeight);
-//     const videoFrame = canvasContext.getImageData(0, 0, videoWidth, videoHeight);
-  
-//     // imageSegmenter.segmentFromInput関数を使用してセグメンテーションを行います
-//     const result = await imageSegmenter.segmentFromInput(videoFrame, {
-//       timestamp: performance.now(),
-//       width: videoWidth,
-//       height: videoHeight,
-//     });
-  
-//     callbackForVideo(result);
-//   }
-    //--------------------------------------------------------------------------------
