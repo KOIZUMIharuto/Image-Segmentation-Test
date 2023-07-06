@@ -24,41 +24,23 @@ let webcamRunning = false;
 // Before we can use HandLandmarker class we must wait for it to finish
 // loading. Machine Learning models can be large and take a moment to
 // get everything needed to run.
-// const createImageSegmenter = async () => {
-//     const vision = await FilesetResolver.forVisionTasks("./wasm");
-//     imageSegmenter = await ImageSegmenter.createFromOptions(vision, {
-//         baseOptions: {
-//             //modelAssetPath: `./models/deeplab_v3.tflite`,
-//             modelAssetPath: `./models/selfie_segmenter_landscape.tflite`,
-//             delegate: "GPU"
-//         },
-//         runningMode: runningMode,
-//         outputCategoryMask: true,
-//         outputConfidenceMasks: false
+const createImageSegmenter = async () => {
+    const vision = await FilesetResolver.forVisionTasks("./wasm");
+    imageSegmenter = await ImageSegmenter.createFromOptions(vision, {
+        baseOptions: {
+            //modelAssetPath: `./models/deeplab_v3.tflite`,
+            modelAssetPath: `./models/selfie_segmenter_landscape.tflite`,
+            delegate: "GPU"
+        },
+        runningMode: runningMode,
+        outputCategoryMask: true,
+        outputConfidenceMasks: false
 
-//     });
-//     labels = imageSegmenter.getLabels();
-//     console.log(labels);
-//     document.getElementById("message").innerHTML += "done";
-// };
-//--------------------------------------------------------------------------------
-async function createImageSegmenter() {
-  const vision = await FilesetResolver.forVisionTasks("./wasm");
-  const options = {
-    baseOptions: {
-      modelAssetPath: "./models/selfie_segmenter_landscape.tflite",
-      delegate: "GPU"
-    },
-    runningMode: runningMode,
-    outputCategoryMask: true,
-    outputConfidenceMasks: false
-  };
-  imageSegmenter = await ImageSegmenter.create(vision, options);
-  labels = imageSegmenter.getLabels();
-  console.log(labels);
-  document.getElementById("message").innerHTML += "done";
-}
-//--------------------------------------------------------------------------------
+    });
+    labels = imageSegmenter.getLabels();
+    console.log(labels);
+    document.getElementById("message").innerHTML += "done";
+};
 createImageSegmenter();
 
 /********************************************************************
@@ -213,7 +195,4 @@ async function predictWebcam() {
   
     callbackForVideo(result);
   }
-
-  
-  
     //--------------------------------------------------------------------------------
