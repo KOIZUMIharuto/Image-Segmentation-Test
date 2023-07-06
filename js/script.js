@@ -195,4 +195,23 @@ async function predictWebcam() {
   
     callbackForVideo(result);
   }
+
+  async function createImageSegmenter() {
+    const vision = await FilesetResolver.forVisionTasks("./wasm");
+    const options = {
+      baseOptions: {
+        modelAssetPath: "./models/selfie_segmenter_landscape.tflite",
+        delegate: "GPU"
+      },
+      runningMode: runningMode,
+      outputCategoryMask: true,
+      outputConfidenceMasks: false
+    };
+    imageSegmenter = await ImageSegmenter.create(vision, options);
+    labels = imageSegmenter.getLabels();
+    console.log(labels);
+    document.getElementById("message").innerHTML += "done";
+  }
+  
+  
     //--------------------------------------------------------------------------------
