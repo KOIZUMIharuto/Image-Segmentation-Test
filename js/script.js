@@ -8,10 +8,10 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-import vision from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
+// import vision from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
 // const { ImageSegmenter, SegmentationMask, FilesetResolver } = vision;
 
-// import vision from "./vision_bundle.js";
+import vision from "./vision_bundle.js";
 const { ImageSegmenter, SegmentationMask, FilesetResolver } = vision;
 
 document.getElementById("message").innerHTML = "Loading model...";
