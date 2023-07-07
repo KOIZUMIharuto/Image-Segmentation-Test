@@ -101,25 +101,33 @@ function enableCam(event) {
       enableWebcamButton.innerText = "DISABLE PREDICTIONS";
   }
 
-  // Check if facingMode is supported
-  const supportsFacingMode = navigator.mediaDevices.getSupportedConstraints().facingMode;
+  // Check if mediaDevices is supported
+  if (navigator.mediaDevices) {
+      // Get available video devices
+      navigator.mediaDevices.enumerateDevices().then((devices) => {
+          let videoDevices = devices.filter(device => device.kind === 'videoinput');
+          let externalCamera = videoDevices.find(device => device.label.toLowerCase().includes('back'));
 
-  // getUserMedia parameters.
-  const constraints = {
-      video: {}
-  };
+          // getUserMedia parameters.
+          const constraints = {
+              video: {
+                  deviceId: externalCamera ? { exact: externalCamera.deviceId } : undefined
+              }
+          };
 
-  // Set facingMode if supported
-  if (supportsFacingMode) {
-      constraints.video.facingMode = { exact: "environment" }; // 外部カメラを使用する
+          // Activate the webcam stream.
+          navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+              video.srcObject = stream;
+              video.addEventListener("loadeddata", predictWebcam);
+          });
+      }).catch((error) => {
+          console.error('Error enumerating video devices:', error);
+      });
+  } else {
+      console.warn("navigator.mediaDevices is not supported by your browser");
   }
-
-  // Activate the webcam stream.
-  navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-      video.srcObject = stream;
-      video.addEventListener("loadeddata", predictWebcam);
-  });
 }
+
 
 //-------------------------------------------------------------------
 let lastVideoTime = -1;
