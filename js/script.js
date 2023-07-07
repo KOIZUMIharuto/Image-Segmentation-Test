@@ -61,29 +61,67 @@ else {
     console.warn("getUserMedia() is not supported by your browser");
 }
 // Enable the live webcam view and start detection.
+// function enableCam(event) {
+//     if (!imageSegmenter) {
+//         console.log("Wait! objectDetector not loaded yet.");
+//         return;
+//     }
+//     if (webcamRunning === true) {
+//         webcamRunning = false;
+//         enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+//     }
+//     else {
+//         webcamRunning = true;
+//         enableWebcamButton.innerText = "DISABLE PREDICTIONS";
+//     }
+//     // getUsermedia parameters.
+//     const constraints = {
+//         video: true
+//     };
+//     // Activate the webcam stream.
+//     navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+//         video.srcObject = stream;
+//         video.addEventListener("loadeddata", predictWebcam);
+//     });
+// }
+
+//-------------------------------------------------------------------
+// Enable the live webcam view and start detection.
 function enableCam(event) {
-    if (!imageSegmenter) {
-        console.log("Wait! objectDetector not loaded yet.");
-        return;
-    }
-    if (webcamRunning === true) {
-        webcamRunning = false;
-        enableWebcamButton.innerText = "ENABLE PREDICTIONS";
-    }
-    else {
-        webcamRunning = true;
-        enableWebcamButton.innerText = "DISABLE PREDICTIONS";
-    }
-    // getUsermedia parameters.
-    const constraints = {
-        video: true
-    };
-    // Activate the webcam stream.
-    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-        video.srcObject = stream;
-        video.addEventListener("loadeddata", predictWebcam);
-    });
+  if (!imageSegmenter) {
+      console.log("Wait! objectDetector not loaded yet.");
+      return;
+  }
+  if (webcamRunning === true) {
+      webcamRunning = false;
+      enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+  }
+  else {
+      webcamRunning = true;
+      enableWebcamButton.innerText = "DISABLE PREDICTIONS";
+  }
+
+  // Check if facingMode is supported
+  const supportsFacingMode = navigator.mediaDevices.getSupportedConstraints().facingMode;
+
+  // getUserMedia parameters.
+  const constraints = {
+      video: {}
+  };
+
+  // Set facingMode if supported
+  if (supportsFacingMode) {
+      constraints.video.facingMode = { exact: "environment" }; // 外部カメラを使用する
+  }
+
+  // Activate the webcam stream.
+  navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+      video.srcObject = stream;
+      video.addEventListener("loadeddata", predictWebcam);
+  });
 }
+
+//-------------------------------------------------------------------
 let lastVideoTime = -1;
 let results = undefined;
 
