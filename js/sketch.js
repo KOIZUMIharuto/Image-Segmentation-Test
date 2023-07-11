@@ -8,6 +8,7 @@ function setup() {
   // segmentation描画用のグラフィックキャンバス
   pg = createGraphics(100, 100);
 
+  
   // お手々が見つかると以下の関数が呼び出される．resultsに各画素における検出結果（背景が255, selfieが0）が入っている．
   gotSegmentation = function (results) {
     let video = document.querySelector('#webcam');
