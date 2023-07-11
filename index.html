@@ -3,38 +3,30 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediaPipe Example</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>p5MediaPipe Image Segmentation</title>
 </head>
 
 <body>
-  <div class="container">
-    <video class="input_video"></video>
-    <div class="canvas-container">
-      <canvas class="output_canvas" width="1280px" height="720px"></canvas>
-    </div>
-    <div class="loading">
-      <div class="spinner"></div>
-      <div class="message">
-        Loading
-      </div>
-    </div>
-    <a class="abs logo" href="http://www.mediapipe.dev" target="_blank">
-      <div style="display: flex;align-items: center;bottom: 0;right: 10px;">
-        <img class="logo" src="logo_white.png" alt="" style="height: 50px;">
-        <span class="title">MediaPipe</span>
-      </div>
-    </a>
-    <div class="shoutout">
-      <div>
-        <!-- Shoutout content -->
-      </div>
-    </div>
-  </div>
-  <div class="control-panel"></div>
 
-  <script src="/js/scriptTest.js"></script>
-</body>
+
+  <body>
+    <h1>image segmentation</h1>
+    <p id="message"></p>
+
+    <button id="webcamButton">
+      ENABLE WEBCAM
+    </button>
+    <div style="position: relative;">
+      <video id="webcam" style="position:absolute;left:0px;top:0px;width:100%;height:auto" autoplay playsinline></video>
+      <div id="canvas" style="position:absolute;left:0px;top:0px">
+      </div>
+    </div>
+
+    <!-- include js libraries -->
+    <script src="./js/p5.js"></script>
+    <script src="./js/sketch.js"></script>
+    <script type="module" src="./js/script.js"></script>
+
+  </body>
 
 </html>
