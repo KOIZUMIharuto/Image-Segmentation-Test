@@ -4,8 +4,9 @@ let signPg;
 var silhouetteColor = [255, 0, 0, 255];
 let svg = ["gakkouari", "hokousyasenyou", "oudanhodou", "oudankinshi", "tsuukoudome"];
 const n = svg.length;
-let icon = new Array(n);
+let iconButton = new Array(n);
 let sign;
+let svgString = new Array(n);
 function clickListener (event) {
   var svgID = event.target.id;
   sign = loadImage("../images/" + svgID + ".png");
@@ -23,8 +24,8 @@ function clickListener (event) {
   console.log(svgID);
 }
 for(let i = 0; i < svg.length; i++){
-  icon[i] = document.getElementById(svg[i]);
-  icon[i].addEventListener("click", clickListener);
+  iconButton[i] = document.getElementById(svg[i]);
+  iconButton[i].addEventListener("click", clickListener);
 }
   
   
