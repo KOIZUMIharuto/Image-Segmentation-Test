@@ -8,7 +8,7 @@ let icon = new Array(n);
 let sign;
 function clickListener (event) {
   var svgID = event.target.id;
-  sign = loadImage("../images/" + svgID + ".svg");
+  sign = loadImage("../images/" + svgID + ".png");
   // sign = loadImage("../images/test.png");
   if(svgID == "gakkouari"){
     //black
@@ -45,7 +45,7 @@ function setup() {
 
     // 読み込んでいるvideo動画のサイズに合わせてキャンバスをリサイズ
     pg.resizeCanvas(video.videoWidth, video.videoHeight);
-    signPg.resizeCanvas(video.videoWidth, video.videoHeight);
+    
 
     if (pg) {
 
@@ -55,8 +55,9 @@ function setup() {
       // signPg.clear();
       
       if(sign != null){
+        signPg.resizeCanvas(sign.width, sign.height);
         signPg.imageMode(CENTER);
-        signPg.image(sign, signPg.width/2, signPg.height/2);
+        signPg.image(sign, signPg.width/2, signPg.height/2, signPg.width, signPg.height);
         signPg.imageMode(CORNER);
       }
 
@@ -99,8 +100,17 @@ function draw() {
 
   // pgがあれば描画する。pgには画像区分を示す画像が入っている gotSegmentation()で更新される
   if (pg) {
-    image(signPg, 0, 0, width, height);
-    image(pg, 0, 0, width, height);
+    imageMode(CENTER);
+    if(sign != null){
+      
+      if(height > width){
+        image(signPg, width/2, height/2, width, sign.height * (width / sign.width));
+      }else{
+        image(signPg, width/2, height/2, sign.width * (height / sign.height), height);
+      }
+    }
+    image(pg, width/2, height/2, width, height);
+      imageMode(CORNER);
   }
 }
 
