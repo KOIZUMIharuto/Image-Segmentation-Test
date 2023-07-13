@@ -7,9 +7,11 @@ const n = svg.length;
 let iconButton = new Array(n);
 let sign;
 let svgString = new Array(n);
+
 function clickListener (event) {
   var svgID = event.target.id;
-  sign = loadImage("../images/" + svgID + ".svg");
+  // sign = loadImage("../images/" + svgID + ".svg");
+  sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/39bf2f51ba26ac76f5577c63f29ba9d5d38616fb/images/gakkouari.svg");
   if(svgID == "gakkouari"){
     //black
     silhouetteColor = [0, 0, 0, 255];
