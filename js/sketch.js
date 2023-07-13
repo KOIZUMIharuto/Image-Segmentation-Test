@@ -13,7 +13,7 @@ function clickListener (event) {
   if(svgID == "gakkouari"){
     //black
     silhouetteColor = [0, 0, 0, 255];
-    sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/5eeb9a69289484ecdb1de6930bcc0b26b183ebd4/images/gakkouari.svg?token=AZCRWK2S7ZTIQBDXYTNLOS3EV5ZOM");
+    sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/gakkouari.svg");
   }else if(svgID == "hokousyasenyou" || svgID == "oudanhodou"){
     //white
     silhouetteColor = [255, 255, 255, 255];
