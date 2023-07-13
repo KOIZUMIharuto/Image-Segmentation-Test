@@ -9,7 +9,7 @@ let sign;
 let svgString = new Array(n);
 function clickListener (event) {
   var svgID = event.target.id;
-  sign = loadImage("../images/" + svgID + ".png");
+  sign = loadImage("../images/" + svgID + ".svg");
   // sign = loadImage("../images/test.png");
   if(svgID == "gakkouari"){
     //black
