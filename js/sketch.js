@@ -13,22 +13,22 @@ function clickListener (event) {
   if(svgID == "gakkouari"){
     //black
     silhouetteColor = [0, 0, 0, 255];
-    sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/39bf2f51ba26ac76f5577c63f29ba9d5d38616fb/images/gakkouari.svg");
+    sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/5eeb9a69289484ecdb1de6930bcc0b26b183ebd4/images/gakkouari.svg?token=AZCRWK2S7ZTIQBDXYTNLOS3EV5ZOM");
   }else if(svgID == "hokousyasenyou" || svgID == "oudanhodou"){
     //white
     silhouetteColor = [255, 255, 255, 255];
     if(svgID == "hokousyasenyou"){
-      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/e2affcbedb65bb9886b00f221d97f70281fa1670/images/hokousyasenyou.svg");
+      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/5eeb9a69289484ecdb1de6930bcc0b26b183ebd4/images/hokousyasenyou.svg?token=AZCRWK5G4PHQPDY5GLHRDY3EV5Y32");
     }else{
-      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/e2affcbedb65bb9886b00f221d97f70281fa1670/images/oudanhodou.svg");
+      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/5eeb9a69289484ecdb1de6930bcc0b26b183ebd4/images/oudanhodou.svg?token=AZCRWK4OVZ74J33RAIHGQRLEV5Y5K");
     }
   }else if(svgID == "oudankinshi" || svgID == "tsuukoudome"){
     //#0334A6
     silhouetteColor = [3, 52, 166, 255];
     if(svgID == "oudankinshi"){
-      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/e2affcbedb65bb9886b00f221d97f70281fa1670/images/oudankinshi.svg");
+      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/5eeb9a69289484ecdb1de6930bcc0b26b183ebd4/images/oudankinshi.svg?token=AZCRWKYNDTLUGNSLIGORHNTEV5Y6S");
     }else{
-      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/e2affcbedb65bb9886b00f221d97f70281fa1670/images/tsuukoudome.svg");
+      sign = loadImage("https://raw.githubusercontent.com/KOIZUMIharuto/Image-Segmentation-Test/5eeb9a69289484ecdb1de6930bcc0b26b183ebd4/images/tsuukoudome.svg?token=AZCRWK2IABKHYW3JVDCPPVLEV5ZEK");
     }
   }
   console.log(svgID);
