@@ -10,7 +10,6 @@ let svgString = new Array(n);
 function clickListener (event) {
   var svgID = event.target.id;
   sign = loadImage("../images/" + svgID + ".svg");
-  // sign = loadImage("../images/test.png");
   if(svgID == "gakkouari"){
     //black
     silhouetteColor = [0, 0, 0, 255];
