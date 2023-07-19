@@ -1,7 +1,9 @@
 let segmentation_results;
 let pg;
+let outlinePg;
 let signPg;
-var silhouetteColor = [255, 0, 0, 255];
+var silhouetteColor = [255, 255, 255, 255];
+var silhouetteOutlineColor = [255, 0, 0, 255];
 let svg = ["gakkouari", "hokousyasenyou", "oudanhodou", "oudankinshi", "tsuukoudome"];
 const n = svg.length;
 let iconButton = new Array(n);
@@ -13,18 +15,22 @@ function clickListener (event) {
   if(svgID == "gakkouari"){
     //black
     silhouetteColor = [0, 0, 0, 255];
+    silhouetteOutlineColor = [0, 0, 0, 0];
     sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/gakkouari.svg");
   }else if(svgID == "hokousyasenyou" || svgID == "oudanhodou"){
     //white
     silhouetteColor = [255, 255, 255, 255];
     if(svgID == "hokousyasenyou"){
+      silhouetteOutlineColor = [0, 0, 0, 0];
       sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/hokousyasenyou.svg");
     }else{
+      //#0334A6
+      silhouetteOutlineColor = [3, 52, 166, 255];
       sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/oudanhodou.svg");
     }
   }else if(svgID == "oudankinshi" || svgID == "tsuukoudome"){
-    //#0334A6
     silhouetteColor = [3, 52, 166, 255];
+    silhouetteOutlineColor = [255, 255, 255, 255];
     if(svgID == "oudankinshi"){
       sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/oudankinshi.svg");
     }else{
@@ -47,6 +53,7 @@ function setup() {
 
   // segmentation描画用のグラフィックキャンバス
   signPg = createGraphics(100, 100);
+  outlinePg = createGraphics(100, 100);
   pg = createGraphics(100, 100);
 
 
@@ -55,6 +62,7 @@ function setup() {
     let video = document.querySelector('#webcam');
 
     // 読み込んでいるvideo動画のサイズに合わせてキャンバスをリサイズ
+    outlinePg.resizeCanvas(video.videoWidth, video.videoHeight);
     pg.resizeCanvas(video.videoWidth, video.videoHeight);
     
 
@@ -62,6 +70,7 @@ function setup() {
 
 
       // pgの描画内容を一旦クリアにする
+      outlinePg.clear();
       pg.clear();
       // signPg.clear();
       
@@ -74,8 +83,10 @@ function setup() {
 
       // pg.pixelsに画素値をロードする
       pg.loadPixels();
+      outlinePg.loadPixels();
 
-      //image(sign, width/2, height/2);
+
+      // image(sign, width/2, height/2);
       // 画素値を書き換える
       let j = 0;
       for (let i = 0; i < results.length; i++) {
@@ -85,6 +96,11 @@ function setup() {
           pg.pixels[j + 1] = 0;
           pg.pixels[j + 2] = 0;
           pg.pixels[j + 3] = 0;
+
+          outlinePg.pixels[j + 0] = 0;
+          outlinePg.pixels[j + 1] = 0;
+          outlinePg.pixels[j + 2] = 0;
+          outlinePg.pixels[j + 3] = 0;
         }
         else { // selfie( results == 0)
           pg.pixels[j + 0] = silhouetteColor[0];
@@ -92,13 +108,17 @@ function setup() {
           pg.pixels[j + 2] = silhouetteColor[2];
           pg.pixels[j + 3] = silhouetteColor[3];
 
+          outlinePg.pixels[j + 0] = silhouetteOutlineColor[0];
+          outlinePg.pixels[j + 1] = silhouetteOutlineColor[1];
+          outlinePg.pixels[j + 2] = silhouetteOutlineColor[2];
+          outlinePg.pixels[j + 3] = silhouetteOutlineColor[3];
         }
         j += 4;
-
       }
-
       // 画素値を反映させる
       pg.updatePixels();
+      outlinePg.updatePixels();
+
     }
     adjustCanvas();
   }
@@ -120,8 +140,9 @@ function draw() {
         image(signPg, width/2, height/2, sign.width * (height / sign.height), height);
       }
     }
+    image(outlinePg, width/2, height/2, width*21/40, height*21/40);
     image(pg, width/2, height/2, width/2, height/2);
-      imageMode(CORNER);
+    imageMode(CORNER);
   }
 }
 
