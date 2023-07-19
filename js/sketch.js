@@ -151,6 +151,6 @@ function windowResized() {
 
 function adjustCanvas() {
   // Get an element by its ID
-  var element_webcam = document.getElementById('webcam');
+  var element_webcam = document.getElementById('coverWebcam');
   resizeCanvas(element_webcam.clientWidth, element_webcam.clientHeight);
 }
