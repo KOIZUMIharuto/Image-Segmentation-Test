@@ -6,7 +6,6 @@ var silhouetteColor = [255, 255, 255, 255];
 var silhouetteOutlineColor = [255, 0, 0, 255];
 let svg = ["gakkouari", "hokousyasenyou", "oudanhodou", "oudankinshi", "tsuukoudome"];
 const n = svg.length;
-let iconButton = new Array(n);
 let sign;
 let svgString = new Array(n);
 
@@ -40,8 +39,8 @@ function clickListener (event) {
   console.log(svgID);
 }
 for(let i = 0; i < svg.length; i++){
-  iconButton[i] = document.getElementById(svg[i]);
-  iconButton[i].addEventListener("click", clickListener);
+  let iconButton = document.getElementById(svg[i]);
+  iconButton.addEventListener("click", clickListener);
 }
   
   
@@ -140,7 +139,7 @@ function draw() {
         image(signPg, width/2, height/2, sign.width * (height / sign.height), height);
       }
     }
-    image(outlinePg, width/2, height/2, width*21/40, height*21/40);
+    image(outlinePg, width/2, height/2, width*22/40, height*22/40);
     image(pg, width/2, height/2, width/2, height/2);
     imageMode(CORNER);
   }
