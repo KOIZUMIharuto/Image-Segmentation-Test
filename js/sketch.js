@@ -120,7 +120,7 @@ function draw() {
         image(signPg, width/2, height/2, sign.width * (height / sign.height), height);
       }
     }
-    image(pg, width/2, height/2, width, height);
+    image(pg, width/2, height/2, width/2, height/2);
       imageMode(CORNER);
   }
 }
