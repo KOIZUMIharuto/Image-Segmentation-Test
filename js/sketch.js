@@ -156,7 +156,7 @@ function adjustCanvas() {
 }
 
 function share() {
-  let element = document.getElementById('canvas');
+  let element = document.getElementById('coverWebcam');
   html2canvas(element).then(canvas => {
       canvas.toBlob(function (blob) {
           let file = new File([blob], "image.png", {
