@@ -171,7 +171,7 @@ function share() {
                   files: filesArray
               })
                   .then(() => console.log('Share was successful.'))
-                  .catch((error) => console.log('Sharing failed', error));
+                  .catch((error) => alert('Sharing failed', error));
           } else {
               alert(`Your system doesn't support sharing files.`);
           }
