@@ -154,3 +154,27 @@ function adjustCanvas() {
   var element_webcam = document.getElementById('coverWebcam');
   resizeCanvas(element_webcam.clientWidth, element_webcam.clientHeight);
 }
+
+function share() {
+  let element = document.getElementById('canvas');
+  html2canvas(element).then(canvas => {
+      canvas.toBlob(function (blob) {
+          let file = new File([blob], "image.png", {
+              type: "image/png",
+          });
+          const filesArray = [file];
+
+          if (navigator.share) {
+              navigator.share({
+                  // title: 'Hiddenmickey',
+                  // text: '#hiddenmickey',
+                  files: filesArray
+              })
+                  .then(() => console.log('Share was successful.'))
+                  .catch((error) => console.log('Sharing failed', error));
+          } else {
+              alert(`Your system doesn't support sharing files.`);
+          }
+      });
+  });
+}
