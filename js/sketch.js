@@ -134,9 +134,9 @@ function draw() {
     if(sign != null){
       
       if(height > width){
-        image(signPg, width/2, height/2, width, sign.height * (width / sign.width));
+        image(signPg, width/2, height/2, width*9/10, sign.height * (width / sign.width)*9/10);
       }else{
-        image(signPg, width/2, height/2, sign.width * (height / sign.height), height);
+        image(signPg, width/2, height/2, sign.width * (height / sign.height)*9/10, height*9/10);
       }
     }
     image(outlinePg, width/2, height/2, width*22/40, height*22/40);
