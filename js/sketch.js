@@ -15,25 +15,25 @@ function clickListener (event) {
     //black
     silhouetteColor = [0, 0, 0, 255];
     silhouetteOutlineColor = [0, 0, 0, 0];
-    sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/gakkouari.svg");
+    sign = loadImage("https://koizumiharuto.github.io/wannabeHyoushiki/images/gakkouari.svg");
   }else if(svgID == "hokousyasenyou" || svgID == "oudanhodou"){
     //white
     silhouetteColor = [255, 255, 255, 255];
     if(svgID == "hokousyasenyou"){
       silhouetteOutlineColor = [0, 0, 0, 0];
-      sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/hokousyasenyou.svg");
+      sign = loadImage("https://koizumiharuto.github.io/wannabeHyoushiki/images/hokousyasenyou.svg");
     }else{
       //#0334A6
       silhouetteOutlineColor = [3, 52, 166, 255];
-      sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/oudanhodou.svg");
+      sign = loadImage("https://koizumiharuto.github.io/wannabeHyoushiki/images/oudanhodou.svg");
     }
   }else if(svgID == "oudankinshi" || svgID == "tsuukoudome"){
     silhouetteColor = [3, 52, 166, 255];
     silhouetteOutlineColor = [255, 255, 255, 255];
     if(svgID == "oudankinshi"){
-      sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/oudankinshi.svg");
+      sign = loadImage("https://koizumiharuto.github.io/wannabeHyoushiki/images/oudankinshi.svg");
     }else{
-      sign = loadImage("https://koizumiharuto.github.io/Image-Segmentation-Test/images/tsuukoudome.svg");
+      sign = loadImage("https://koizumiharuto.github.io/wannabeHyoushiki/images/tsuukoudome.svg");
     }
   }
   console.log(svgID);
