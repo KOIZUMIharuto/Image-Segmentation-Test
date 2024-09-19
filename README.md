@@ -1,5 +1,5 @@
 # Image-Segmentation-Test
-https://koizumiharuto.github.io/Image-Segmentation-Test/
+[https://koizumiharuto.github.io/Image-Segmentation-Test/](https://koizumiharuto.github.io/wannabeHyoushiki/)
 
 道路標識になれるアプリ
 スマホで人を映すとシルエットが切り抜かれます。
